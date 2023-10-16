@@ -1,3 +1,6 @@
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using CodeFirst.Data;
 namespace CodeFirst
 {
     public class Program
@@ -5,6 +8,8 @@ namespace CodeFirst
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+            builder.Services.AddDbContext<CodeFirstContext>(options =>
+                options.UseSqlServer(builder.Configuration.GetConnectionString("CodeFirstContext") ?? throw new InvalidOperationException("Connection string 'CodeFirstContext' not found.")));
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
