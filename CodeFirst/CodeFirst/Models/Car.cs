@@ -23,5 +23,7 @@ namespace CodeFirst.Models
         [DataType(DataType.Date)]
         [DisplayName("Fecha")]
         public DateTime ExamDate { get; set; }
+
+        
     }
 }
